@@ -6,8 +6,8 @@ int main() {
         TodoManager manager;
         manager.run();
 
-        //TodoManager* pManager = new TodoManager();;
-		//pManager->run();
+        //TodoManager* pManager = new TodoManager();
+        //pManager->run();
     }
     catch (const std::exception& e) {
         std::cerr << "程序发生异常: " << e.what() << std::endl;

@@ -6,32 +6,32 @@
 TodoManager::TodoManager() : todoList(std::make_unique<TodoList>()) {}
 
 void TodoManager::run() {
-    std::cout << "=== é¢å‘å¯¹è±¡ç‰ˆå¾…åŠäº‹é¡¹åˆ—è¡¨ ===" << std::endl;
-    std::cout << "å½“å‰æ–‡ä»¶: " << todoList->getFilename() << std::endl;
+    std::cout << "=== ÃæÏò¶ÔÏó°æ´ı°ìÊÂÏîÁĞ±í ===" << std::endl;
+    std::cout << "µ±Ç°ÎÄ¼ş: " << todoList->getFilename() << std::endl;
 
     handleMainMenu();
 }
 
 void TodoManager::printMainMenu() const {
-    std::cout << "\n--- ä¸»èœå• ---" << std::endl;
-    std::cout << "1. æ·»åŠ ä»»åŠ¡" << std::endl;
-    std::cout << "2. æŸ¥çœ‹æ‰€æœ‰ä»»åŠ¡" << std::endl;
-    std::cout << "3. åˆ é™¤ä»»åŠ¡" << std::endl;
-    std::cout << "4. æ–‡ä»¶æ“ä½œ" << std::endl;
-    std::cout << "5. ç»Ÿè®¡ä¿¡æ¯" << std::endl;
-    std::cout << "6. æ¸…ç©ºæ‰€æœ‰ä»»åŠ¡" << std::endl;
-    std::cout << "7. é€€å‡ºç¨‹åº" << std::endl;
-    std::cout << "è¯·é€‰æ‹©æ“ä½œ (1-7): ";
+    std::cout << "\n--- Ö÷²Ëµ¥ ---" << std::endl;
+    std::cout << "1. Ìí¼ÓÈÎÎñ" << std::endl;
+    std::cout << "2. ²é¿´ËùÓĞÈÎÎñ" << std::endl;
+    std::cout << "3. É¾³ıÈÎÎñ" << std::endl;
+    std::cout << "4. ÎÄ¼ş²Ù×÷" << std::endl;
+    std::cout << "5. Í³¼ÆĞÅÏ¢" << std::endl;
+    std::cout << "6. Çå¿ÕËùÓĞÈÎÎñ" << std::endl;
+    std::cout << "7. ÍË³ö³ÌĞò" << std::endl;
+    std::cout << "ÇëÑ¡Ôñ²Ù×÷ (1-7): ";
 }
 
 void TodoManager::printFileMenu() const {
-    std::cout << "\n--- æ–‡ä»¶æ“ä½œ ---" << std::endl;
-    std::cout << "1. ä¿å­˜ä»»åŠ¡åˆ°æ–‡ä»¶" << std::endl;
-    std::cout << "2. ä»æ–‡ä»¶åŠ è½½ä»»åŠ¡" << std::endl;
-    std::cout << "3. æŸ¥çœ‹æ–‡ä»¶å†…å®¹" << std::endl;
-    std::cout << "4. æ›´æ”¹æ–‡ä»¶å" << std::endl;
-    std::cout << "5. è¿”å›ä¸»èœå•" << std::endl;
-    std::cout << "è¯·é€‰æ‹©æ“ä½œ (1-5): ";
+    std::cout << "\n--- ÎÄ¼ş²Ù×÷ ---" << std::endl;
+    std::cout << "1. ±£´æÈÎÎñµ½ÎÄ¼ş" << std::endl;
+    std::cout << "2. ´ÓÎÄ¼ş¼ÓÔØÈÎÎñ" << std::endl;
+    std::cout << "3. ²é¿´ÎÄ¼şÄÚÈİ" << std::endl;
+    std::cout << "4. ¸ü¸ÄÎÄ¼şÃû" << std::endl;
+    std::cout << "5. ·µ»ØÖ÷²Ëµ¥" << std::endl;
+    std::cout << "ÇëÑ¡Ôñ²Ù×÷ (1-5): ";
 }
 
 void TodoManager::handleMainMenu() {
@@ -62,10 +62,10 @@ void TodoManager::handleMainMenu() {
             todoList->clearAllTasks();
             break;
         case 7:
-            std::cout << "æ„Ÿè°¢ä½¿ç”¨å¾…åŠäº‹é¡¹åˆ—è¡¨ï¼Œå†è§ï¼" << std::endl;
+            std::cout << "¸ĞĞ»Ê¹ÓÃ´ı°ìÊÂÏîÁĞ±í£¬ÔÙ¼û£¡" << std::endl;
             break;
         default:
-            std::cout << "æ— æ•ˆé€‰æ‹©ï¼Œè¯·é‡è¯•ã€‚" << std::endl;
+            std::cout << "ÎŞĞ§Ñ¡Ôñ£¬ÇëÖØÊÔ¡£" << std::endl;
         }
     } while (choice != 7);
 }
@@ -91,30 +91,30 @@ void TodoManager::handleFileMenu() {
         case 4:
         {
             std::string newFilename;
-            std::cout << "è¯·è¾“å…¥æ–°çš„æ–‡ä»¶å: ";
+            std::cout << "ÇëÊäÈëĞÂµÄÎÄ¼şÃû: ";
             std::getline(std::cin, newFilename);
             todoList->setFilename(newFilename);
         }
         break;
         case 5:
-            std::cout << "è¿”å›ä¸»èœå•..." << std::endl;
+            std::cout << "·µ»ØÖ÷²Ëµ¥..." << std::endl;
             break;
         default:
-            std::cout << "æ— æ•ˆé€‰æ‹©ï¼Œè¯·é‡è¯•ã€‚" << std::endl;
+            std::cout << "ÎŞĞ§Ñ¡Ôñ£¬ÇëÖØÊÔ¡£" << std::endl;
         }
     } while (fileChoice != 5);
 }
 
 void TodoManager::handleAddTask() {
     std::string task;
-    std::cout << "è¯·è¾“å…¥æ–°ä»»åŠ¡: ";
+    std::cout << "ÇëÊäÈëĞÂÈÎÎñ: ";
     std::getline(std::cin, task);
     todoList->addTask(task);
 
-    // è¯¢é—®æ˜¯å¦ç«‹å³ä¿å­˜
+    // Ñ¯ÎÊÊÇ·ñÁ¢¼´±£´æ
     if (!task.empty()) {
         char autoSave;
-        std::cout << "æ˜¯å¦ç«‹å³ä¿å­˜åˆ°æ–‡ä»¶ï¼Ÿ(y/n): ";
+        std::cout << "ÊÇ·ñÁ¢¼´±£´æµ½ÎÄ¼ş£¿(y/n): ";
         std::cin >> autoSave;
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
@@ -128,13 +128,13 @@ void TodoManager::handleDeleteTask() {
     todoList->viewTasks();
     if (!todoList->isEmpty()) {
         int taskNumber;
-        std::cout << "è¯·è¾“å…¥è¦åˆ é™¤çš„ä»»åŠ¡ç¼–å·: ";
+        std::cout << "ÇëÊäÈëÒªÉ¾³ıµÄÈÎÎñ±àºÅ: ";
         std::cin >> taskNumber;
 
         if (std::cin.fail()) {
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cout << "è¯·è¾“å…¥æœ‰æ•ˆçš„æ•°å­—ï¼" << std::endl;
+            std::cout << "ÇëÊäÈëÓĞĞ§µÄÊı×Ö£¡" << std::endl;
             return;
         }
 
@@ -145,7 +145,7 @@ void TodoManager::handleDeleteTask() {
 
 void TodoManager::handleSaveToFile() {
     char choice;
-    std::cout << "ä¿å­˜åˆ°é»˜è®¤æ–‡ä»¶ " << todoList->getFilename() << "ï¼Ÿ(y/n): ";
+    std::cout << "±£´æµ½Ä¬ÈÏÎÄ¼ş " << todoList->getFilename() << "£¿(y/n): ";
     std::cin >> choice;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
@@ -154,7 +154,7 @@ void TodoManager::handleSaveToFile() {
     }
     else {
         std::string customFilename;
-        std::cout << "è¯·è¾“å…¥è‡ªå®šä¹‰æ–‡ä»¶å: ";
+        std::cout << "ÇëÊäÈë×Ô¶¨ÒåÎÄ¼şÃû: ";
         std::getline(std::cin, customFilename);
         todoList->saveToFile(customFilename);
     }
@@ -162,7 +162,7 @@ void TodoManager::handleSaveToFile() {
 
 void TodoManager::handleLoadFromFile() {
     char choice;
-    std::cout << "ä»é»˜è®¤æ–‡ä»¶ " << todoList->getFilename() << " åŠ è½½ï¼Ÿ(y/n): ";
+    std::cout << "´ÓÄ¬ÈÏÎÄ¼ş " << todoList->getFilename() << " ¼ÓÔØ£¿(y/n): ";
     std::cin >> choice;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
@@ -171,7 +171,7 @@ void TodoManager::handleLoadFromFile() {
     }
     else {
         std::string customFilename;
-        std::cout << "è¯·è¾“å…¥è¦åŠ è½½çš„æ–‡ä»¶å: ";
+        std::cout << "ÇëÊäÈëÒª¼ÓÔØµÄÎÄ¼şÃû: ";
         std::getline(std::cin, customFilename);
         todoList->loadFromFile(customFilename);
     }
@@ -182,7 +182,7 @@ void TodoManager::handleViewFileContent() const {
     std::ifstream file(filename);
 
     if (file.is_open()) {
-        std::cout << "\n--- æ–‡ä»¶å†…å®¹ (" << filename << ") ---" << std::endl;
+        std::cout << "\n--- ÎÄ¼şÄÚÈİ (" << filename << ") ---" << std::endl;
         std::string line;
         int lineNum = 1;
         while (std::getline(file, line)) {
@@ -192,6 +192,6 @@ void TodoManager::handleViewFileContent() const {
         file.close();
     }
     else {
-        std::cout << "æ–‡ä»¶ä¸å­˜åœ¨æˆ–æ— æ³•æ‰“å¼€ï¼" << std::endl;
+        std::cout << "ÎÄ¼ş²»´æÔÚ»òÎŞ·¨´ò¿ª£¡" << std::endl;
     }
 }

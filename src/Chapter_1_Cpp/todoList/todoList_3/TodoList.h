@@ -7,36 +7,36 @@
 
 class TodoList {
 public:
-    // æ„é€ å‡½æ•°
+    // ¹¹Ôìº¯Êı
     TodoList();
     explicit TodoList(const std::string& file);
 
-    // æ ¸å¿ƒåŠŸèƒ½æ–¹æ³•
+    // ºËĞÄ¹¦ÄÜ·½·¨
     void addTask(const std::string& task);
     void viewTasks() const;
     void deleteTask(int taskNumber);
     void clearAllTasks();
-
-    // æ–‡ä»¶æ“ä½œæ–¹æ³•
+    
+    // ÎÄ¼ş²Ù×÷·½·¨
     bool saveToFile();
     bool loadFromFile();
     bool saveToFile(const std::string& customFilename);
     bool loadFromFile(const std::string& customFilename);
-
-    // æŸ¥è¯¢æ–¹æ³•
+    
+    // ²éÑ¯·½·¨
     int getTaskCount() const;
     bool isEmpty() const;
     std::string getTask(int index) const;
-
-    // çŠ¶æ€ä¿¡æ¯
+    
+    // ×´Ì¬ĞÅÏ¢
     std::string getFilename() const;
     void setFilename(const std::string& newFilename);
-
-    // å·¥å…·æ–¹æ³•
+    
+    // ¹¤¾ß·½·¨
     void displayStatistics() const;
 
 private:
-    // ç§æœ‰è¾…åŠ©æ–¹æ³•
+    // Ë½ÓĞ¸¨Öú·½·¨
     bool isValidIndex(int index) const;
     void displayTasksInternal() const;
 

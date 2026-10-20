@@ -3,73 +3,73 @@
 #include <limits>
 #include <algorithm>
 
-// é»˜è®¤æ„é€ å‡½æ•°
+// Ä¬ÈÏ¹¹Ôìº¯Êı
 TodoList::TodoList() : filename("todo_list.txt") {
-    loadFromFile(); // è‡ªåŠ¨åŠ è½½ä¹‹å‰çš„ä»»åŠ¡
+    loadFromFile(); // ×Ô¶¯¼ÓÔØÖ®Ç°µÄÈÎÎñ
 }
 
-// å¸¦æ–‡ä»¶åå‚æ•°çš„æ„é€ å‡½æ•°
+// ´øÎÄ¼şÃû²ÎÊıµÄ¹¹Ôìº¯Êı
 TodoList::TodoList(const std::string& file) : filename(file) {
-    loadFromFile(); // è‡ªåŠ¨åŠ è½½ä¹‹å‰çš„ä»»åŠ¡
+    loadFromFile(); // ×Ô¶¯¼ÓÔØÖ®Ç°µÄÈÎÎñ
 }
 
-// æ·»åŠ ä»»åŠ¡
+// Ìí¼ÓÈÎÎñ
 void TodoList::addTask(const std::string& task) {
     if (!task.empty()) {
         tasks.push_back(task);
-        std::cout << "ä»»åŠ¡æ·»åŠ æˆåŠŸï¼" << std::endl;
+        std::cout << "ÈÎÎñÌí¼Ó³É¹¦£¡" << std::endl;
     }
     else {
-        std::cout << "ä»»åŠ¡å†…å®¹ä¸èƒ½ä¸ºç©ºï¼" << std::endl;
+        std::cout << "ÈÎÎñÄÚÈİ²»ÄÜÎª¿Õ£¡" << std::endl;
     }
 }
 
-// æŸ¥çœ‹æ‰€æœ‰ä»»åŠ¡
+// ²é¿´ËùÓĞÈÎÎñ
 void TodoList::viewTasks() const {
     if (tasks.empty()) {
-        std::cout << "å½“å‰æ²¡æœ‰å¾…åŠä»»åŠ¡ã€‚" << std::endl;
+        std::cout << "µ±Ç°Ã»ÓĞ´ı°ìÈÎÎñ¡£" << std::endl;
         return;
     }
 
-    std::cout << "\n--- å½“å‰å¾…åŠäº‹é¡¹ ---" << std::endl;
+    std::cout << "\n--- µ±Ç°´ı°ìÊÂÏî ---" << std::endl;
     displayTasksInternal();
-    std::cout << "æ€»è®¡: " << tasks.size() << " ä¸ªä»»åŠ¡" << std::endl;
+    std::cout << "×Ü¼Æ: " << tasks.size() << " ¸öÈÎÎñ" << std::endl;
 }
 
-// åˆ é™¤ä»»åŠ¡
+// É¾³ıÈÎÎñ
 void TodoList::deleteTask(int taskNumber) {
     if (tasks.empty()) {
-        std::cout << "å½“å‰æ²¡æœ‰å¯åˆ é™¤çš„ä»»åŠ¡ã€‚" << std::endl;
+        std::cout << "µ±Ç°Ã»ÓĞ¿ÉÉ¾³ıµÄÈÎÎñ¡£" << std::endl;
         return;
     }
 
     if (isValidIndex(taskNumber)) {
         std::string removedTask = tasks[taskNumber - 1];
         tasks.erase(tasks.begin() + taskNumber - 1);
-        std::cout << "ä»»åŠ¡ \"" << removedTask << "\" å·²åˆ é™¤ï¼" << std::endl;
+        std::cout << "ÈÎÎñ \"" << removedTask << "\" ÒÑÉ¾³ı£¡" << std::endl;
     }
     else {
-        std::cout << "æ— æ•ˆçš„ä»»åŠ¡ç¼–å·ï¼" << std::endl;
+        std::cout << "ÎŞĞ§µÄÈÎÎñ±àºÅ£¡" << std::endl;
     }
 }
 
-// æ¸…ç©ºæ‰€æœ‰ä»»åŠ¡
+// Çå¿ÕËùÓĞÈÎÎñ
 void TodoList::clearAllTasks() {
     tasks.clear();
-    std::cout << "æ‰€æœ‰ä»»åŠ¡å·²æ¸…ç©ºï¼" << std::endl;
+    std::cout << "ËùÓĞÈÎÎñÒÑÇå¿Õ£¡" << std::endl;
 }
 
-// ä¿å­˜åˆ°é»˜è®¤æ–‡ä»¶
+// ±£´æµ½Ä¬ÈÏÎÄ¼ş
 bool TodoList::saveToFile() {
     return saveToFile(filename);
 }
 
-// ä¿å­˜åˆ°æŒ‡å®šæ–‡ä»¶
-bool TodoList::saveToFile(const std::string& customFilename)  {
+// ±£´æµ½Ö¸¶¨ÎÄ¼ş
+bool TodoList::saveToFile(const std::string& customFilename) {
     std::ofstream outputFile(customFilename);
 
     if (!outputFile.is_open()) {
-        std::cout << "é”™è¯¯ï¼šæ— æ³•åˆ›å»ºæˆ–æ‰“å¼€æ–‡ä»¶ " << customFilename << "ï¼" << std::endl;
+        std::cout << "´íÎó£ºÎŞ·¨´´½¨»ò´ò¿ªÎÄ¼ş " << customFilename << "£¡" << std::endl;
         return false;
     }
 
@@ -78,21 +78,21 @@ bool TodoList::saveToFile(const std::string& customFilename)  {
     }
 
     outputFile.close();
-    std::cout << "æˆåŠŸä¿å­˜ " << tasks.size() << " ä¸ªä»»åŠ¡åˆ°æ–‡ä»¶: " << customFilename << std::endl;
+    std::cout << "³É¹¦±£´æ " << tasks.size() << " ¸öÈÎÎñµ½ÎÄ¼ş: " << customFilename << std::endl;
     return true;
 }
 
-// ä»é»˜è®¤æ–‡ä»¶åŠ è½½
+// ´ÓÄ¬ÈÏÎÄ¼ş¼ÓÔØ
 bool TodoList::loadFromFile() {
     return loadFromFile(filename);
 }
 
-// ä»æŒ‡å®šæ–‡ä»¶åŠ è½½
+// ´ÓÖ¸¶¨ÎÄ¼ş¼ÓÔØ
 bool TodoList::loadFromFile(const std::string& customFilename) {
     std::ifstream inputFile(customFilename);
 
     if (!inputFile.is_open()) {
-        std::cout << "æ–‡ä»¶ " << customFilename << " ä¸å­˜åœ¨æˆ–æ— æ³•æ‰“å¼€ï¼Œå°†åˆ›å»ºæ–°æ–‡ä»¶ã€‚" << std::endl;
+        std::cout << "ÎÄ¼ş " << customFilename << " ²»´æÔÚ»òÎŞ·¨´ò¿ª£¬½«´´½¨ĞÂÎÄ¼ş¡£" << std::endl;
         return false;
     }
 
@@ -110,53 +110,53 @@ bool TodoList::loadFromFile(const std::string& customFilename) {
     inputFile.close();
 
     if (loadedCount > 0) {
-        tasks = loadedTasks; // æ›¿æ¢å½“å‰ä»»åŠ¡åˆ—è¡¨
-        filename = customFilename; // æ›´æ–°æ–‡ä»¶å
-        std::cout << "ä»æ–‡ä»¶åŠ è½½äº† " << loadedCount << " ä¸ªä»»åŠ¡ã€‚" << std::endl;
+        tasks = loadedTasks; // Ìæ»»µ±Ç°ÈÎÎñÁĞ±í
+        filename = customFilename; // ¸üĞÂÎÄ¼şÃû
+        std::cout << "´ÓÎÄ¼ş¼ÓÔØÁË " << loadedCount << " ¸öÈÎÎñ¡£" << std::endl;
         return true;
     }
 
     return false;
 }
 
-// è·å–ä»»åŠ¡æ•°é‡
+// »ñÈ¡ÈÎÎñÊıÁ¿
 int TodoList::getTaskCount() const {
     return tasks.size();
 }
 
-// æ£€æŸ¥æ˜¯å¦ä¸ºç©º
+// ¼ì²éÊÇ·ñÎª¿Õ
 bool TodoList::isEmpty() const {
     return tasks.empty();
 }
 
-// è·å–ç‰¹å®šä»»åŠ¡
+// »ñÈ¡ÌØ¶¨ÈÎÎñ
 std::string TodoList::getTask(int index) const {
     if (isValidIndex(index)) {
         return tasks[index - 1];
     }
-    return "æ— æ•ˆçš„ä»»åŠ¡ç´¢å¼•";
+    return "ÎŞĞ§µÄÈÎÎñË÷Òı";
 }
 
-// è·å–æ–‡ä»¶å
+// »ñÈ¡ÎÄ¼şÃû
 std::string TodoList::getFilename() const {
     return filename;
 }
 
-// è®¾ç½®æ–‡ä»¶å
+// ÉèÖÃÎÄ¼şÃû
 void TodoList::setFilename(const std::string& newFilename) {
     filename = newFilename;
-    std::cout << "æ–‡ä»¶åå·²æ›´æ–°ä¸º: " << filename << std::endl;
+    std::cout << "ÎÄ¼şÃûÒÑ¸üĞÂÎª: " << filename << std::endl;
 }
 
-// æ˜¾ç¤ºç»Ÿè®¡ä¿¡æ¯
+// ÏÔÊ¾Í³¼ÆĞÅÏ¢
 void TodoList::displayStatistics() const {
-    std::cout << "\n--- ç»Ÿè®¡ä¿¡æ¯ ---" << std::endl;
-    std::cout << "ä»»åŠ¡æ€»æ•°: " << getTaskCount() << std::endl;
-    std::cout << "å­˜å‚¨æ–‡ä»¶: " << getFilename() << std::endl;
-    std::cout << "æ˜¯å¦ä¸ºç©º: " << (isEmpty() ? "æ˜¯" : "å¦") << std::endl;
+    std::cout << "\n--- Í³¼ÆĞÅÏ¢ ---" << std::endl;
+    std::cout << "ÈÎÎñ×ÜÊı: " << getTaskCount() << std::endl;
+    std::cout << "´æ´¢ÎÄ¼ş: " << getFilename() << std::endl;
+    std::cout << "ÊÇ·ñÎª¿Õ: " << (isEmpty() ? "ÊÇ" : "·ñ") << std::endl;
 
     if (!isEmpty()) {
-        std::cout << "å‰3ä¸ªä»»åŠ¡:" << std::endl;
+        std::cout << "Ç°3¸öÈÎÎñ:" << std::endl;
         int displayCount = std::min(3, getTaskCount());
         for (int i = 1; i <= displayCount; ++i) {
             std::cout << "  " << i << ". " << getTask(i) << std::endl;
@@ -164,12 +164,12 @@ void TodoList::displayStatistics() const {
     }
 }
 
-// ç§æœ‰æ–¹æ³•ï¼šæ£€æŸ¥ç´¢å¼•æ˜¯å¦æœ‰æ•ˆ
+// Ë½ÓĞ·½·¨£º¼ì²éË÷ÒıÊÇ·ñÓĞĞ§
 bool TodoList::isValidIndex(int index) const {
     return (index >= 1 && index <= static_cast<int>(tasks.size()));
 }
 
-// ç§æœ‰æ–¹æ³•ï¼šå†…éƒ¨æ˜¾ç¤ºä»»åŠ¡
+// Ë½ÓĞ·½·¨£ºÄÚ²¿ÏÔÊ¾ÈÎÎñ
 void TodoList::displayTasksInternal() const {
     for (size_t i = 0; i < tasks.size(); ++i) {
         std::cout << i + 1 << ". " << tasks[i] << std::endl;
